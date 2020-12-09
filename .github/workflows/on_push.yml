@@ -26,9 +26,3 @@ jobs:
         run: npm install
       - name: Run Tests
         run: npm test
-  build:
-    name: build
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/build@v1
