@@ -1,0 +1,27 @@
+name: Test
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [15.x]
+    steps:
+      - name: Checkout Latest Version
+        uses: actions/checkout@v2
+      - name: Cache Node Modules
+        id: test-npm
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-v${{ matrix.node-version }}-${{ hashFiles('package-lock.json') }}
+      - name: Install All Dependencies
+        if: steps.test-npm.outputs.cache-hit != 'true'
+        run: npm install
+      - name: Run Tests
+        run: npm test
