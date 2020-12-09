@@ -1,12 +1,7 @@
-import { Application, NextFunction, Request, Response } from 'express';
+import { Application, Request, Response } from 'express';
 
-export default (app: Application) => {
-  app.use(function onError(
-    err: Error,
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) {
+export default (app: Application): void => {
+  app.use(function onError(err: Error, req: Request, res: Response) {
     res.statusCode = 500;
     res
       .json({

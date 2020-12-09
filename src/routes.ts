@@ -1,7 +1,6 @@
-import { Application, NextFunction, Request, Response } from 'express';
-
+import { Application } from 'express';
 import testRoutes from './routes/test.routes';
 
-export default (app: Application) => {
+export default (app: Application): void => {
   testRoutes(app);
 };
