@@ -44,7 +44,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-v15-${{ hashFiles('package-lock.json') }}
       - name: Cache Build
-        id: test-npm
+        id: build-dist
         uses: actions/cache@v2
         with:
           path: dist
