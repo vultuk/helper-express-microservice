@@ -1,8 +1,7 @@
-name: Test and Build
+name: Test, Build and Deploy Production
 on:
-  pull:
-    branches:
-      - '*'
+  release:
+    types: [released]
 jobs:
   test:
     name: Test
